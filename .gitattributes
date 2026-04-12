@@ -1,0 +1,7 @@
+* text=auto eol=lf
+
+# Rails generated and vendored content
+api/db/schema.rb linguist-generated
+api/vendor/* linguist-vendored
+api/config/credentials/*.yml.enc diff=rails_credentials
+api/config/credentials.yml.enc diff=rails_credentials

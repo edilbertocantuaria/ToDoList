@@ -1,0 +1,38 @@
+# Root ignore for the unified repository
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!**/.env.example
+!**/.env.sample
+
+# Node / front-end artifacts
+web/node_modules/
+web/build/
+web/coverage/
+
+# Rails / API artifacts
+api/.bundle/
+api/log/*
+api/tmp/
+api/tmp/*
+api/storage/*
+api/coverage/
+api/config/master.key
+
+# Keep placeholder files
+!api/log/.keep
+!api/tmp/.keep
+!api/tmp/pids/.keep
+!api/storage/.keep
+
+# Docker runtime files
+docker-compose.override.yml

@@ -1,0 +1,32 @@
+# Git and editor metadata
+.git
+.gitignore
+.gitattributes
+.vscode
+
+# Environment files
+.env*
+!.env.example
+!*.env.example
+
+# Bundler and Rails runtime artifacts
+.bundle
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+tmp/pids/*
+!tmp/pids/.keep
+storage/*
+!storage/.keep
+
+# Credentials and generated files
+config/master.key
+config/credentials/*.key
+coverage
+
+# Build and container files
+.dockerignore
+Dockerfile*
+.github
+.devcontainer
