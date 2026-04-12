@@ -10,4 +10,4 @@ rails db:create db:migrate
 rails server
 ```
 
-Documentacao de endpoints: `doc/usage.md`.
+Documentação de endpoints: `doc/usage.md`.

@@ -1,6 +1,6 @@
 # Web
 
-Aplicacao React do projeto To Do List.
+Aplicação React do projeto To Do List.
 
 ## Executar localmente
 
@@ -9,9 +9,9 @@ npm install
 npm start
 ```
 
-Por padrao, o front roda em `http://localhost:3000`.
+Por padrão, o front roda em `http://localhost:3000`.
 
-Para apontar para outra API, defina a variavel:
+Para apontar para outra API, defina a variável:
 
 ```bash
 REACT_APP_API_URL=http://localhost:3000

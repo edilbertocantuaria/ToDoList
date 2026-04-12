@@ -1,71 +1,71 @@
 # To Do List
 
-Aplicacao de lista de tarefas com front-end React e API Rails, organizada em uma unica raiz de projeto para desenvolvimento local com Docker.
+Aplicação de lista de tarefas com front-end React e API Rails, organizada em uma única raiz de projeto para desenvolvimento local com Docker.
 
-Este repositorio e composto por:
+Este repositório é composto por:
 
 1. `web/`: interface React responsiva para login, listas, tarefas e tags.
-2. `api/`: API Rails responsavel por autenticacao, persistencia e regras de negocio.
-3. `docker-compose.yml`: orquestracao local com `db`, `api` e `web`.
+2. `api/`: API Rails responsável por autenticação, persistência e regras de negócio.
+3. `docker-compose.yml`: orquestração local com `db`, `api` e `web`.
 
-## Visao Geral
+## Visão Geral
 
 Fluxo principal:
 
-1. Usuario acessa o front-end em `web/`.
-2. O front-end autentica o usuario e salva o token recebido da API.
+1. Usuário acessa o front-end em `web/`.
+2. O front-end autentica o usuário e salva o token recebido da API.
 3. O front chama a API para listar, criar, editar e remover task lists, tasks e tags.
-4. A API valida a requisicao, aplica as regras de negocio e persiste os dados no PostgreSQL.
-5. O usuario visualiza o estado atualizado sem precisar sair da interface.
+4. A API valida a requisição, aplica as regras de negócio e persiste os dados no PostgreSQL.
+5. O usuário visualiza o estado atualizado sem precisar sair da interface.
 
 ## Arquitetura
 
 ```text
 Browser
-	 |
-	 | HTTP
-	 v
+   |
+   | HTTP
+   v
 Web Container (React)
-	 |
-	 | HTTP interno
-	 v
+   |
+   | HTTP interno
+   v
 API Container (Rails)
-	 |
-	 | PostgreSQL
-	 v
+   |
+   | PostgreSQL
+   v
 Database Container
 ```
 
-## Stack Tecnologica
+## Stack Tecnológica
 
 - Front-end: React 18, React Router, Axios, Material UI, Styled Components.
-- Back-end: Ruby on Rails 7.2, JSON API, autenticao via token JWT.
+- Back-end: Ruby on Rails 7.2, JSON API, autenticação via token JWT.
 - Banco: PostgreSQL.
 - Infra: Docker e Docker Compose.
 
 ## Estrutura do Projeto
 
 - `web/`
-	- aplicacao React
-	- codigo-fonte em `web/src`
-	- configuracoes do front em `web/package.json`
+  - aplicação React
+  - código-fonte em `web/src`
+  - configurações do front em `web/package.json`
 - `api/`
-	- aplicacao Rails
-	- controllers, models e services em `api/app`
-	- configuracoes do Rails em `api/config`
+  - aplicação Rails
+  - controllers, models e services em `api/app`
+  - configurações do Rails em `api/config`
 - `docker-compose.yml`
-	- sobe os tres servicos locais
+  - sobe os três serviços locais
 - `.env.example`
-	- exemplo de variaveis de ambiente da raiz
+  - exemplo de variáveis de ambiente da raiz
 
-## Pre-requisitos
+## Pré-requisitos
 
 1. Docker e Docker Compose.
 2. Node.js e npm, caso queira rodar o front fora do Docker.
 3. Ruby e Bundler, caso queira rodar a API fora do Docker.
 4. PostgreSQL, caso queira rodar a API fora do Docker.
 
-## Setup Rapido com Docker
+## Setup Rápido com Docker
 
 1. Crie o arquivo de ambiente na raiz:
 
@@ -79,7 +79,7 @@ No PowerShell:
 Copy-Item .env.example .env
 ```
 
-2. Se quiser alterar os valores padrao, ajuste no `.env`:
+2. Se quiser alterar os valores padrão, ajuste no `.env`:
 
 - `DB_USERNAME`
 - `DB_PASSWORD`
@@ -88,7 +88,7 @@ Copy-Item .env.example .env
 - `TEST_DATABASE`
 - `REACT_APP_API_URL`
 
-3. Suba os servicos:
+3. Suba os serviços:
 
 ```bash
 docker compose up --build
@@ -102,36 +102,36 @@ docker compose up --build
 
 ## Como Funciona o Docker
 
-O compose sobe tres containers:
+O compose sobe três containers:
 
 1. `db`: PostgreSQL com volume persistente.
 2. `api`: Rails apontando para o banco `db`.
-3. `web`: React consumindo a API pela variavel `REACT_APP_API_URL`.
+3. `web`: React consumindo a API pela variável `REACT_APP_API_URL`.
 
-O front usa `http://localhost:3000` por padrao em desenvolvimento local.
+O front usa `http://localhost:3000` por padrão em desenvolvimento local.
 
-## Usuarios de Teste (Desenvolvimento)
+## Usuários de Teste (Desenvolvimento)
 
-Para facilitar o primeiro login, o projeto possui usuarios de seed para ambiente de desenvolvimento:
+Para facilitar o primeiro login, o projeto possui usuários de seed para ambiente de desenvolvimento:
 
 1. Email: `joao@example.com`
-	Senha: `password123`
+   Senha: `password123`
 2. Email: `maria@example.com`
-	Senha: `password456`
+   Senha: `password456`
 
-Se os usuarios ainda nao existirem no banco, execute:
+Se os usuários ainda não existirem no banco, execute:
 
 ```bash
 docker compose exec api bundle exec rails db:seed
 ```
 
-## Variaveis de Ambiente
+## Variáveis de Ambiente
 
 ### Raiz
 
 Arquivo: `.env`
 
-- `DB_USERNAME`: usuario do PostgreSQL.
+- `DB_USERNAME`: usuário do PostgreSQL.
 - `DB_PASSWORD`: senha do PostgreSQL.
 - `DB_PORT`: porta exposta do banco.
 - `DEVELOPMENT_DATABASE`: nome do banco de desenvolvimento.
@@ -174,7 +174,7 @@ npm install
 npm start
 ```
 
-## Comandos Uteis
+## Comandos Úteis
 
 ### API
 
@@ -218,19 +218,19 @@ cd web
 npm run lint
 ```
 
-## Documentacao por Modulo
+## Documentação por Módulo
 
 - Backend: [api/README.md](api/README.md)
 - Frontend: [web/README.md](web/README.md)
 - Guia de endpoints da API: [api/doc/usage.md](api/doc/usage.md)
 
-## Documentacao da API
+## Documentação da API
 
-A documentacao detalhada dos endpoints, payloads, regras de negocio e exemplos de resposta esta em [api/doc/usage.md](api/doc/usage.md).
+A documentação detalhada dos endpoints, payloads, regras de negócio e exemplos de resposta está em [api/doc/usage.md](api/doc/usage.md).
 
-## Troubleshooting
+## Solução de Problemas
 
-1. Front nao consegue acessar a API: confirme `REACT_APP_API_URL` e se o container `api` esta no ar.
+1. Front não consegue acessar a API: confirme `REACT_APP_API_URL` e se o container `api` está no ar.
 2. Erro de banco no backend: confira `DB_USERNAME`, `DB_PASSWORD` e o status do container `db`.
-3. Aplicacao nao sobe no Docker: rode `docker compose logs -f api` e `docker compose logs -f web` para ver o ponto exato da falha.
+3. Aplicação não sobe no Docker: rode `docker compose logs -f api` e `docker compose logs -f web` para ver o ponto exato da falha.
 
