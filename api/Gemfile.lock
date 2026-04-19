@@ -74,7 +74,7 @@ GEM
       minitest (>= 5.1, < 6)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    ansi (1.5.0)
+    ansi (1.6.0)
     ast (2.4.3)
     base64 (0.3.0)
     bcrypt (3.1.22)
@@ -136,10 +136,10 @@ GEM
     marcel (1.0.4)
     mini_mime (1.1.5)
     minitest (5.27.0)
-    minitest-reporters (1.7.1)
+    minitest-reporters (1.8.0)
       ansi
       builder
-      minitest (>= 5.0)
+      minitest (>= 5.0, < 7)
       ruby-progressbar
     msgpack (1.8.0)
     multi_xml (0.8.1)
