@@ -1,0 +1,4 @@
+DATA_DIR = "/var/lib/pgadmin"
+DEFAULT_SERVER = "0.0.0.0"
+DEFAULT_SERVER_PORT = 5050
+SERVER_MODE = True

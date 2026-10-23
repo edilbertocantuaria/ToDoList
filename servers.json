@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "todo-list",
+      "Group": "Servers",
+      "Host": "db",
+      "Port": 5432,
+      "MaintenanceDB": "to_do_list_development",
+      "Username": "postgres",
+      "SSLMode": "prefer"
+    }
+  }
+}

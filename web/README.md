@@ -9,10 +9,10 @@ npm install
 npm start
 ```
 
-Por padrão, o front roda em `http://localhost:3000`.
+Por padrão, o front aponta para `http://localhost:3100`.
 
 Para apontar para outra API, defina a variável:
 
 ```bash
-REACT_APP_API_URL=http://localhost:3000
+REACT_APP_API_URL=http://localhost:3100
 ```

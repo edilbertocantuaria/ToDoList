@@ -87,6 +87,9 @@ Copy-Item .env.example .env
 - `DEVELOPMENT_DATABASE`
 - `TEST_DATABASE`
 - `REACT_APP_API_URL`
+- `PGADMIN_PORT`
+- `PGADMIN_DEFAULT_EMAIL`
+- `PGADMIN_DEFAULT_PASSWORD`
 
 3. Suba os serviços:
 
@@ -97,18 +100,28 @@ docker compose up --build
 4. Acesse:
 
 - Web: http://localhost:3001
-- API: http://localhost:3000
-- Health check: http://localhost:3000/up
+- API: http://localhost:3100
+- pgAdmin (serviço próprio): http://localhost:5051
+- pgAdmin (dentro do container `api`): http://localhost:5150
+- Health check: http://localhost:3100/up
 
 ## Como Funciona o Docker
 
-O compose sobe três containers:
+O compose sobe quatro serviços:
 
-1. `db`: PostgreSQL com volume persistente.
-2. `api`: Rails apontando para o banco `db`.
+1. `db`: PostgreSQL com volume persistente, exposto na porta `5433`.
+2. `api`: Rails apontando para o banco `db`, com pgAdmin embutido na porta `5150`.
 3. `web`: React consumindo a API pela variável `REACT_APP_API_URL`.
+4. `pgadmin`: pgAdmin em serviço próprio, na porta `5051`.
 
-O front usa `http://localhost:3000` por padrão em desenvolvimento local.
+As portas padrão usam faixas diferentes da AllerCheck (`3000`, `5050`, `5432`), para as duas aplicações rodarem ao mesmo tempo. Todas podem ser alteradas no `.env`: `API_PORT`, `API_PGADMIN_PORT`, `DB_HOST_PORT` e `PGADMIN_PORT`.
+
+O front usa `http://localhost:3100` por padrão em desenvolvimento local.
+
+O pgAdmin usa `PGADMIN_DEFAULT_EMAIL` e `PGADMIN_DEFAULT_PASSWORD` do arquivo `.env`.
+Troque a senha de exemplo antes de expor a porta para outras máquinas. A porta do
+pgAdmin fica vinculada ao `localhost` por padrão e pode ser alterada com `PGADMIN_PORT`.
+Os dados e a configuração do pgAdmin persistem no volume `pgadmin_data`.
 
 ## Usuários de Teste (Desenvolvimento)
 
@@ -202,6 +215,10 @@ docker compose logs -f api
 docker compose logs -f web
 ```
 
+O login inicial do pgAdmin é criado na primeira inicialização do volume `pgadmin_data`.
+Se você alterar as credenciais no `.env` depois desse primeiro início, a conta já
+criada não será alterada automaticamente.
+
 ## Testes
 
 ### Backend
@@ -233,4 +250,3 @@ A documentação detalhada dos endpoints, payloads, regras de negócio e exemplo
 1. Front não consegue acessar a API: confirme `REACT_APP_API_URL` e se o container `api` está no ar.
 2. Erro de banco no backend: confira `DB_USERNAME`, `DB_PASSWORD` e o status do container `db`.
 3. Aplicação não sobe no Docker: rode `docker compose logs -f api` e `docker compose logs -f web` para ver o ponto exato da falha.
-
